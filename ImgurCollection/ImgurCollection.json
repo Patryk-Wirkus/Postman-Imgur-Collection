@@ -1,0 +1,1613 @@
+{
+	"info": {
+		"_postman_id": "270b1063-b851-4b29-a359-b06603ca4cec",
+		"name": "Imgur",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6503553"
+	},
+	"item": [
+		{
+			"name": "POST",
+			"item": [
+				{
+					"name": "Add a new album",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Check if the JSON response body contains data with an ID and deletehash.\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.id).to.exist\r",
+									"    pm.expect(jsonData.data.deletehash).to.exist\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Game Of Thrones",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "This album will feature cast photos from the Game of Thrones series",
+									"type": "text"
+								},
+								{
+									"key": "cover",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "privacy",
+									"value": "hidden",
+									"description": "Values are: public, hidden or secret",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{imgurUrl}}album",
+							"host": [
+								"{{imgurUrl}}album"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add or remove an album from my favorites",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check if the data has a true value\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.eql(true);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{imgurUrl}}album/:id/favorite ",
+							"host": [
+								"{{imgurUrl}}album"
+							],
+							"path": [
+								":id",
+								"favorite "
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "lQmCBSY"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a new image",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Check if the JSON response body contains data with an ID, title, and deletehash\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.id).to.exist\r",
+									"    pm.expect(jsonData.data.title).to.exist\r",
+									"    pm.expect(jsonData.data.deletehash).to.exist\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/patry/Desktop/electric-supercar.jpg"
+								},
+								{
+									"key": "title",
+									"value": "BEV",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Lexus Electrified Sport",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Lexus's electric LFA successor",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{imgurUrl}}upload",
+							"host": [
+								"{{imgurUrl}}upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add images to an album",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check if the data has a true value\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.eql(true);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "ids[]",
+									"value": "846sg76",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "ids[]",
+									"value": "qXPFQnk",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "ids[]",
+									"value": "XU8E02A",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "ids[]",
+									"value": "mIFWt0e",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{imgurUrl}}album/:id/add",
+							"host": [
+								"{{imgurUrl}}album"
+							],
+							"path": [
+								":id",
+								"add"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "lybVjfX"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove images from an album",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check if the data has a true value\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.eql(true);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "ids[]",
+									"value": "846sg76",
+									"type": "text"
+								},
+								{
+									"key": "ids[]",
+									"value": "XU8E02A",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "ids[]",
+									"value": "qXPFQnk",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{imgurUrl}}album/:id/remove_images",
+							"host": [
+								"{{imgurUrl}}album"
+							],
+							"path": [
+								":id",
+								"remove_images"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "lybVjfX"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change the title/description of an image",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Check if the data has a true value\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.eql(true);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "My dream car",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "One of the best nissans",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{imgurUrl}}image/:id",
+							"host": [
+								"{{imgurUrl}}image"
+							],
+							"path": [
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "b084jru"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add or remove an image from my favorites",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check if the data has a favorited/unfavorited value\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.be.oneOf([\"favorited\", \"unfavorited\"]);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{imgurUrl}}image/:id/favorite",
+							"host": [
+								"{{imgurUrl}}image"
+							],
+							"path": [
+								":id",
+								"favorite"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "bo1iSw7"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Comment on a specific image/album",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check if the JSON response body contains data with an ID\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.id).to.exist;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "comment",
+									"value": "Just wow!!",
+									"type": "text"
+								},
+								{
+									"key": "image_id",
+									"value": "XU8E02A",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{imgurUrl}}comment",
+							"host": [
+								"{{imgurUrl}}comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Share the image to the gallery",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Check if the data has a true value\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.eql(true);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "The best character from \"The 100\"",
+									"type": "text"
+								},
+								{
+									"key": "topic",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "terms",
+									"value": "1",
+									"description": "Only 1 is accepted",
+									"type": "text"
+								},
+								{
+									"key": "mature",
+									"value": "0",
+									"description": "1 - mature, 0 - immature",
+									"type": "text"
+								},
+								{
+									"key": "tags",
+									"value": "Series, The 100, Octavia",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{imgurUrl}}gallery/image/:id",
+							"host": [
+								"{{imgurUrl}}gallery"
+							],
+							"path": [
+								"image",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "XU8E02A"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Share the album to the gallery",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check if the data has a true value\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.eql(true);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "The best actors in THE 100 series!",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{imgurUrl}}gallery/album/:id",
+							"host": [
+								"{{imgurUrl}}gallery"
+							],
+							"path": [
+								"album",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "Xpc1Bob"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GET",
+			"item": [
+				{
+					"name": "My all albums",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"pm.test(\"Check if the JSON response body contains data with an ID, title, and description.\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    for (var i = 0; i < jsonData.data.length; i++) {\r",
+									"        if (!jsonData.data[i].id || !jsonData.data[i].title || !jsonData.data[i].description) {\r",
+									"            pm.expect.fail(\"Object \" + i + \" is missing required properties.\");\r",
+									"        }\r",
+									"            pm.expect(jsonData.data[i].id).to.exist\r",
+									"            pm.expect(jsonData.data[i].title).to.exist\r",
+									"            pm.expect(jsonData.data[i].description).to.exist\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{imgurUrl}}account/{{username}}/albums",
+							"host": [
+								"{{imgurUrl}}account"
+							],
+							"path": [
+								"{{username}}",
+								"albums"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All images on my account",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check if the JSON response body contains data with an ID, title, and description.\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    for (var i = 0; i < jsonData.data.length; i++) {\r",
+									"        if (!jsonData.data[i].id || !jsonData.data[i].title || !jsonData.data[i].description) {\r",
+									"            pm.expect.fail(\"Object \" + i + \" is missing required properties.\");\r",
+									"        }\r",
+									"            pm.expect(jsonData.data[i].id).to.exist\r",
+									"            pm.expect(jsonData.data[i].title).to.exist\r",
+									"            pm.expect(jsonData.data[i].description).to.exist\r",
+									"    }\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{imgurUrl}}account/{{username}}/images",
+							"host": [
+								"{{imgurUrl}}account"
+							],
+							"path": [
+								"{{username}}",
+								"images"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "How many albums are linked to my account",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Check if the JSON response body contains any data.\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.not.be.null;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{imgurUrl}}account/{{username}}/albums/count",
+							"host": [
+								"{{imgurUrl}}account"
+							],
+							"path": [
+								"{{username}}",
+								"albums",
+								"count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Album IDs on my account",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Check if the JSON response body contains data with album IDs.\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.be.an('array').that.is.not.empty; \r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{imgurUrl}}account/{{username}}/albums/ids",
+							"host": [
+								"{{imgurUrl}}account"
+							],
+							"path": [
+								"{{username}}",
+								"albums",
+								"ids"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Image IDs on my account",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check if the JSON response body contains data with image IDs.\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.be.an('array').that.is.not.empty; \r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{imgurUrl}}account/{{username}}/images/ids",
+							"host": [
+								"{{imgurUrl}}account"
+							],
+							"path": [
+								"{{username}}",
+								"images",
+								"ids"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "An image",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check if the JSON response body contains data with an ID, and link\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.id).to.exist\r",
+									"    pm.expect(jsonData.data.link).to.exist\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{imgurUrl}}image/:id",
+							"host": [
+								"{{imgurUrl}}image"
+							],
+							"path": [
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "846sg76"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "An album",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check if the JSON response body contains data with an ID, and link\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.id).to.exist\r",
+									"    pm.expect(jsonData.data.link).to.exist\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{imgurUrl}}album/:id",
+							"host": [
+								"{{imgurUrl}}album"
+							],
+							"path": [
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "lQmCBSY"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Images from an album",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check if the JSON response body contains data with an ID, title, description and link\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    for (var i = 0; i < jsonData.data.length; i++) {\r",
+									"        if (!jsonData.data[i].id || !jsonData.data[i].title  || !jsonData.data[i].description || !jsonData.data[i].link) {\r",
+									"            pm.expect.fail(\"Object \" + i + \" is missing required properties.\");\r",
+									"        }\r",
+									"            pm.expect(jsonData.data[i].id).to.exist\r",
+									"            pm.expect(jsonData.data[i].title).to.exist\r",
+									"            pm.expect(jsonData.data[i].description).to.exist\r",
+									"            pm.expect(!jsonData.data[i].link).to.exist\r",
+									"\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{imgurUrl}}album/:id/images",
+							"host": [
+								"{{imgurUrl}}album"
+							],
+							"path": [
+								":id",
+								"images"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "lQmCBSY"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "The imgur gallery",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Check if the JSON response body contains data with an ID, and title\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    for (var i = 0; i < jsonData.data.length; i++) {\r",
+									"        if (!jsonData.data[i].id || !jsonData.data[i].title) {\r",
+									"            pm.expect.fail(\"Object \" + i + \" is missing required properties.\");\r",
+									"        }\r",
+									"            pm.expect(jsonData.data[i].id).to.exist;\r",
+									"            pm.expect(jsonData.data[i].title).to.exist;\r",
+									"\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{imgurUrl}}gallery/top/time/year//?showViral=false&album_previews=true",
+							"host": [
+								"{{imgurUrl}}gallery"
+							],
+							"path": [
+								"top",
+								"time",
+								"year",
+								"",
+								""
+							],
+							"query": [
+								{
+									"key": "showViral",
+									"value": "false"
+								},
+								{
+									"key": "album_previews",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search for specific images/albums in the gallery",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"pm.test(\"Check if the JSON response body contains data with an ID, and title\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    for (var i = 0; i < jsonData.data.length; i++) {\r",
+									"        if (!jsonData.data[i].id || !jsonData.data[i].title) {\r",
+									"            pm.expect.fail(\"Object \" + i + \" is missing required properties.\");\r",
+									"        }\r",
+									"            pm.expect(jsonData.data[i].id).to.exist;\r",
+									"            pm.expect(jsonData.data[i].title).to.exist\r",
+									"           \r",
+									"\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{imgurUrl}}gallery/search/top/all//?q_type=jpg&q_exactly=Octavia Blake",
+							"host": [
+								"{{imgurUrl}}gallery"
+							],
+							"path": [
+								"search",
+								"top",
+								"all",
+								"",
+								""
+							],
+							"query": [
+								{
+									"key": "q_type",
+									"value": "jpg"
+								},
+								{
+									"key": "q_exactly",
+									"value": "Octavia Blake"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Comments from an image/album",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{imgurUrl}}gallery/:image/comments/?commentSort=top",
+							"host": [
+								"{{imgurUrl}}gallery"
+							],
+							"path": [
+								":image",
+								"comments",
+								""
+							],
+							"query": [
+								{
+									"key": "commentSort",
+									"value": "top",
+									"description": "best | top | new | "
+								}
+							],
+							"variable": [
+								{
+									"key": "image",
+									"value": "XU8E02A",
+									"description": "The ID of an album or image in the gallery"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "The account settings",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Check if the data has a true value\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.account_url).to.eql(\"1Patryk1\");\r",
+									"    pm.expect(jsonData.data.email).to.eql(\"loginpro7@o2.pl\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{imgurUrl}}account/{{username}}/settings",
+							"host": [
+								"{{imgurUrl}}account"
+							],
+							"path": [
+								"{{username}}",
+								"settings"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PUT",
+			"item": [
+				{
+					"name": "Update an album",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check if the data has a true value\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.eql(true);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "ids[]",
+									"value": "",
+									"description": "You can add images to this album",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "title",
+									"value": "The iconic cars",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "This album contains and will contain more photos of cars",
+									"type": "text"
+								},
+								{
+									"key": "privacy",
+									"value": "hidden",
+									"description": "Values are: public, hidden or secret",
+									"type": "text"
+								},
+								{
+									"key": "cover",
+									"value": "n3O8pdG",
+									"description": "The ID of the image to be the album cover",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{imgurUrl}}album/:id",
+							"host": [
+								"{{imgurUrl}}album"
+							],
+							"path": [
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "lybVjfX"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify the account settings",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check if the data has a true value\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.eql(true);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "bio",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "public_images",
+									"value": "",
+									"description": "true or false",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "messaging_enabled",
+									"value": "false",
+									"description": "true or false",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "newsletter_subscribed",
+									"value": "false",
+									"description": "true or false",
+									"type": "text"
+								},
+								{
+									"key": "show_mature",
+									"value": "false",
+									"description": "true or false",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{imgurUrl}}account/{{username}}/settings",
+							"host": [
+								"{{imgurUrl}}account"
+							],
+							"path": [
+								"{{username}}",
+								"settings"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DELETE",
+			"item": [
+				{
+					"name": "Delete an album",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check if the data has a true value\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.eql(true);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://api.imgur.com/3/account/{{username}}/album/:id",
+							"protocol": "https",
+							"host": [
+								"api",
+								"imgur",
+								"com"
+							],
+							"path": [
+								"3",
+								"account",
+								"{{username}}",
+								"album",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "qrY60Jx"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a comment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check if the data has a true value\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.eql(true);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://api.imgur.com/3/account/{{username}}/comment/:id",
+							"protocol": "https",
+							"host": [
+								"api",
+								"imgur",
+								"com"
+							],
+							"path": [
+								"3",
+								"account",
+								"{{username}}",
+								"comment",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2315067197"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete an image",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check if the data has a true value\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.eql(true);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://api.imgur.com/3/account/{{username}}/image/:id",
+							"protocol": "https",
+							"host": [
+								"api",
+								"imgur",
+								"com"
+							],
+							"path": [
+								"3",
+								"account",
+								"{{username}}",
+								"image",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "sBVD0HF"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove an image/album from the gallery",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check if the data has a true value\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.eql(true);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://api.imgur.com/3/gallery/:id",
+							"protocol": "https",
+							"host": [
+								"api",
+								"imgur",
+								"com"
+							],
+							"path": [
+								"3",
+								"gallery",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "XU8E02A",
+									"description": "The ID of an image/album"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "tokenType",
+				"value": "bearer",
+				"type": "string"
+			},
+			{
+				"key": "accessToken",
+				"value": "19ac2d4371f47ce270722045ab18855c3e1fdc57",
+				"type": "string"
+			},
+			{
+				"key": "scope",
+				"value": "",
+				"type": "string"
+			},
+			{
+				"key": "redirect_uri",
+				"value": "https://www.getpostman.com/oauth2/callback",
+				"type": "string"
+			},
+			{
+				"key": "clientSecret",
+				"value": "{{clientSecret}}",
+				"type": "string"
+			},
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			},
+			{
+				"key": "headerPrefix",
+				"value": "Bearer",
+				"type": "string"
+			},
+			{
+				"key": "clientId",
+				"value": "{{clientID}}",
+				"type": "string"
+			},
+			{
+				"key": "tokenName",
+				"value": "MyToken",
+				"type": "string"
+			},
+			{
+				"key": "challengeAlgorithm",
+				"value": "S256",
+				"type": "string"
+			},
+			{
+				"key": "grant_type",
+				"value": "authorization_code",
+				"type": "string"
+			},
+			{
+				"key": "authUrl",
+				"value": "https://api.imgur.com/oauth2/authorize",
+				"type": "string"
+			},
+			{
+				"key": "client_authentication",
+				"value": "header",
+				"type": "string"
+			},
+			{
+				"key": "accessTokenUrl",
+				"value": "https://api.imgur.com/oauth2/token",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
